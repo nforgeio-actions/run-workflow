@@ -37,4 +37,4 @@ $inputs   = Get-ActionInput "inputs"   $false
 
 # Start the workflow.
 
-Invoke-GitHubWorkflow $repo $workflow $inputs
+Invoke-ActionWorkflow $repo $workflow $inputs
