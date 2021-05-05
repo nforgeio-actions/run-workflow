@@ -17,7 +17,7 @@ inputs:
     description: "Specifies the target workflow repo as: [HOST/]OWNER/REPO"
     required: true
   workflow:
-    description: "Identifies the target workflow file within the repo [$/.github/workflows] folder"
+    description: "Identifies the target workflow file within the repo by name"
     required: true
   inputs:
     description: "Specifies any workflow inputs as JSON text (name/value object)"
