@@ -33,7 +33,7 @@ Pop-Location
 
 $repo     = Get-ActionInput "repo"     $true
 $workflow = Get-ActionInput "workflow" $true
-$inputs   = Get-ActionInput "inputs"   $true
+$inputs   = Get-ActionInput "inputs"   $false
 
 # Start the workflow.
 
