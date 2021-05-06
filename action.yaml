@@ -19,6 +19,10 @@ inputs:
   workflow:
     description: "Identifies the target workflow file within the repo by name"
     required: true
+  branch:
+    description: "Optionally identifies the branch or tag holding the target workflow"
+    required: false
+    default: master
   inputs:
     description: "Specifies any workflow inputs as JSON text (name/value object)"
     required: false

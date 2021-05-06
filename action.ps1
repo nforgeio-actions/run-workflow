@@ -33,8 +33,9 @@ Pop-Location
 
 $repo     = Get-ActionInput "repo"     $true
 $workflow = Get-ActionInput "workflow" $true
+$branch   = Get-ActionInput "branch"   $true
 $inputs   = Get-ActionInput "inputs"   $false
 
 # Start the workflow.
 
-Invoke-ActionWorkflow $repo $workflow $inputs
+Invoke-ActionWorkflow $repo $workflow $branch $inputs
