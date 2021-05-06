@@ -38,4 +38,4 @@ $inputs   = Get-ActionInput "inputs"   $false
 
 # Start the workflow.
 
-Invoke-ActionWorkflow $repo $workflow $branch $inputs
+Invoke-ActionWorkflow $repo $workflow -branch $branch -inputs $inputs
