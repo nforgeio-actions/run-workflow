@@ -7,6 +7,8 @@
 # divulged or used for any purpose by other organizations or individuals without a
 # formal written and signed agreement with neonFORGE, LLC.
 
+Import-Module powershell-yaml
+
 # Verify that we're running on a properly configured neonFORGE jobrunner 
 # and import the deployment and action scripts from neonCLOUD.
 
@@ -36,6 +38,17 @@ $workflow = Get-ActionInput "workflow" $true
 $branch   = Get-ActionInput "branch"   $true
 $inputs   = Get-ActionInput "inputs"   $false
 
+# [inputs] is either empty or a YAML formatted string.  We're going to parse any
+# YAML and then convert it to JSON, so we can pass it to the new workflow via the
+# GitHub CLI.
+
+$jsonInputs = "{}"
+
+if (![System.String]::IsNullOrWhitespace($inputs))
+{
+    $jsonInputs = ConvertTo-Json $(ConvertFrom-Yaml $inputs)
+}
+
 # Start the workflow.
 
-Invoke-ActionWorkflow $repo $workflow -branch $branch -inputJson $inputs
+Invoke-ActionWorkflow $repo $workflow -branch $branch -inputJson $jsonInputs

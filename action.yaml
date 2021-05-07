@@ -24,7 +24,7 @@ inputs:
     required: false
     default: master
   inputs:
-    description: "Specifies any workflow inputs as JSON text (name/value object)"
+    description: "Specifies any workflow inputs as YAML text"
     required: false
     default: ""
 runs:
