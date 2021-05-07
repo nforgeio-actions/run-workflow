@@ -31,24 +31,32 @@ Push-Location $ncPowershell
 . ./includes.ps1
 Pop-Location
 
-# Fetch the arguments
-
-$repo     = Get-ActionInput "repo"     $true
-$workflow = Get-ActionInput "workflow" $true
-$branch   = Get-ActionInput "branch"   $true
-$inputs   = Get-ActionInput "inputs"   $false
-
-# [inputs] is either empty or a YAML formatted string.  We're going to parse any
-# YAML and then convert it to JSON, so we can pass it to the new workflow via the
-# GitHub CLI.
-
-$jsonInputs = "{}"
-
-if (![System.String]::IsNullOrWhitespace($inputs))
+try
 {
-    $jsonInputs = ConvertTo-Json $(ConvertFrom-Yaml $inputs)
+    # Fetch the arguments
+
+    $repo     = Get-ActionInput "repo"     $true
+    $workflow = Get-ActionInput "workflow" $true
+    $branch   = Get-ActionInput "branch"   $true
+    $inputs   = Get-ActionInput "inputs"   $false
+
+    # [inputs] is either empty or a YAML formatted string.  We're going to parse any
+    # YAML and then convert it to JSON, so we can pass it to the new workflow via the
+    # GitHub CLI.
+
+    $jsonInputs = "{}"
+
+    if (![System.String]::IsNullOrWhitespace($inputs))
+    {
+        $jsonInputs = ConvertTo-Json $(ConvertFrom-Yaml $inputs)
+    }
+
+    # Start the workflow.
+
+    Invoke-ActionWorkflow $repo $workflow -branch $branch -inputJson $jsonInputs
 }
-
-# Start the workflow.
-
-Invoke-ActionWorkflow $repo $workflow -branch $branch -inputJson $jsonInputs
+catch
+{
+    Write-ActionException $_
+    exit 1
+}
