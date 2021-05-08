@@ -6,7 +6,7 @@ Used to start a workflow from within another workflow.  Note that the target wor
 
 ## Examples
 
-**Run a workflow with no inputs:**
+**Start a workflow with no inputs:**
 ```
 steps:
 - uses: nforgeio-actions/start-workflow@master
@@ -26,7 +26,7 @@ steps:
       my-arg: my-value
 ```
 
-**Run a workflow with multiple inputs:**
+**Start a workflow with multiple inputs:**
 ```
 steps:
 
@@ -41,7 +41,7 @@ steps:
       my-arg2: "my-value2"
 ```
 
-**Schedule a workflow on a non-master branch:**
+**Start a workflow on a non-master branch:**
 
 - uses: nforgeio-actions/start-workflow@master
   with: 
