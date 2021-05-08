@@ -8,9 +8,9 @@
 # formal written and signed agreement with neonFORGE, LLC.
 
 #------------------------------------------------------------------------------
-# Used to run a workflow from within another workflow.
+# Used to start a workflow from within another workflow.
 
-name: run-workflow
+name: start-workflow
 description: "Used to run a workflow from within another workflow"
 inputs:
   repo:
