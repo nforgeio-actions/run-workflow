@@ -8,8 +8,6 @@
 # divulged or used for any purpose by other organizations or individuals without a
 # formal written and signed agreement with neonFORGE, LLC.
 
-Import-Module powershell-yaml
-
 # Verify that we're running on a properly configured neonFORGE jobrunner 
 # and import the deployment and action scripts from neonCLOUD.
 
